@@ -9,6 +9,6 @@ public class TriggerEnter : MonoBehaviour {
 	void OnTriggerEnter(Collider other)
   {
     this.gameObject.SetActive(false);
-    _manager.SendMessage(nameMethod);
+    _manager.SendMessage(nameMethod,true,SendMessageOptions.RequireReceiver);
   }
 }

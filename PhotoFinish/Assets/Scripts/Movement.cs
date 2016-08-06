@@ -13,27 +13,35 @@ public class Movement : MonoBehaviour {
 
   public Vector3 direction;
 
-  private bool _endRace = false;
-  private bool _finishRace = false;
+  public enum States { INITIAL, RACE, FINISH, STOP}
+  private States m_state;
 
 	// Use this for initialization
-	void Start () {
-   
+	void Start ()
+  {
+    ResetVariables();
+    m_state = States.INITIAL;
+	}
+
+  public void ResetVariables()
+  {
     _max_velocity = Random.Range(max_velocity[0], max_velocity[1]);
     _min_velocity = Random.Range(min_velocity[0], min_velocity[1]);
     aceleration = Random.Range(acelerationRange[0], acelerationRange[1]);
     velocity = Random.Range(_min_velocity, _max_velocity);
-	}
+  }
 	
 	// Update is called once per frame
 	void Update () {
-    if(!_endRace)
+    switch(m_state)
     {
-      Move();
-      if (!_finishRace)
-      {
+      case States.RACE:
+        Move();
         UpdateData();
-      }
+        break;
+      case States.FINISH:
+        Move();
+        break;
     }
   }
 
@@ -49,13 +57,18 @@ public class Movement : MonoBehaviour {
     velocity = Mathf.Min(velocity, _max_velocity);
   }
 
-  public void SetEndRace()
+  public void SomeOneCrossLine()
   {
-    _endRace = true;
+    m_state = States.FINISH;
   }
 
-  public void SetFinishRace()
+  public void SomeoneReachEndTrack()
   {
-    _finishRace = true;
+    m_state = States.STOP;
+  }
+
+  public void StartRace()
+  {
+    m_state = States.RACE;
   }
 }
