@@ -1,14 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class GameManager : MonoBehaviour {
 
   public Movement[] runners;
   private bool _photoFinish = false;
 
+  private DateTime _timeStart;
+  private DateTime _timeClick;
+
   void Awake()
   {
-    Random.seed = (int)System.DateTime.Now.Ticks;
+    UnityEngine.Random.seed = (int)System.DateTime.Now.Ticks;
   }
 
   public void SetEndRace()
@@ -16,6 +20,11 @@ public class GameManager : MonoBehaviour {
     for(int i = 0; i < runners.Length; i++)
     {
       runners[i].SetEndRace();
+    }
+
+    if(_timeStart == _timeClick)
+    {
+      _timeClick = DateTime.Now;
     }
   }
 
@@ -25,6 +34,7 @@ public class GameManager : MonoBehaviour {
     {
       runners[i].SetFinishRace();
     }
+    _timeClick = DateTime.Now;
   }
 
   void Update()
@@ -35,14 +45,20 @@ public class GameManager : MonoBehaviour {
     }
     if(Input.touchCount == 1 || Input.GetMouseButtonDown(0))
     {
-      _photoFinish = true;
       SetEndRace();
       ShowResults();
+      _photoFinish = true;
     }
   }
 
   void ShowResults()
   {
 
+  }
+
+  private void RestartGame()
+  {
+    _timeStart = DateTime.Now;
+    _timeClick = _timeStart;
   }
 }
