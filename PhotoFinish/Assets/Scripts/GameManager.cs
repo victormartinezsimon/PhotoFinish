@@ -10,9 +10,9 @@ public class GameManager : MonoBehaviour {
   public Movement[] runners;
   private Vector3[] initialPositions;
 
-  private DateTime _timeStart;
-  private DateTime _timeClick;
-  private DateTime _timeShouldBe;
+  private long _timeStart;
+  private long _timeClick;
+  private long _timeShouldBe;
 
   private enum States { INITIAL, RUN, FINISH_CROSSED, END_RACE};
   private States m_state;
@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour {
       runners[i].SomeOneCrossLine();
     }
     m_state = States.FINISH_CROSSED;
-    _timeShouldBe = DateTime.Now;
+    _timeShouldBe = DateTime.Now.Ticks;
   }
 
   public void SomeoneReachEndTrack(bool fromTrigger)
@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour {
     }
     if(fromTrigger)
     {
-      _timeClick = DateTime.Now;
+      _timeClick = DateTime.Now.Ticks;
       ShowResults();
       m_state = States.END_RACE;
     }
@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour {
   {
     if (Input.touchCount == 1 || Input.GetMouseButtonDown(0))
     {
-      _timeClick = DateTime.Now;
+      _timeClick = DateTime.Now.Ticks;
       PlayCameraSound();
       CalculateTimeToFinish();
       ShowResults();
@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour {
   {
     if (Input.touchCount == 1 || Input.GetMouseButtonDown(0))
     {
-      _timeClick = DateTime.Now;
+      _timeClick = DateTime.Now.Ticks;
       PlayCameraSound();
       ShowResults();
       SomeoneReachEndTrack(false);
@@ -139,20 +139,26 @@ public class GameManager : MonoBehaviour {
   #region finish
   void ShowResults()
   {
-    float diff = Mathf.Round(_timeShouldBe.Ticks - _timeClick.Ticks) / 1000000f;
+    float diff = Mathf.Round(_timeShouldBe - _timeClick) / 1000000f;
     SetTextNow(formatText(diff));
     SaveWR(diff);
   }
   void CalculateTimeToFinish()
   {
-    _timeShouldBe = DateTime.Now.AddSeconds(1);
+    float min =  199;
+    for(int i = 0; i < runners.Length; i++)
+    {
+      float res = runners[i].TimeToFinish();
+      min  = Mathf.Min(min, runners[i].TimeToFinish());
+    }
+    _timeShouldBe = DateTime.Now.AddSeconds(min).Ticks;
   }
   #endregion
   #region restart
   private void RestartGame()
   {
     UnityEngine.Random.seed = (int)System.DateTime.Now.Ticks;
-    _timeStart = DateTime.Now;
+    _timeStart = DateTime.Now.Ticks;
     _timeClick = _timeStart;
     _timeShouldBe = _timeStart;
 

@@ -16,6 +16,8 @@ public class Movement : MonoBehaviour {
   public enum States { INITIAL, RACE, FINISH, STOP}
   private States m_state;
 
+  public Transform finishPoint;
+
 	// Use this for initialization
 	void Start ()
   {
@@ -71,4 +73,17 @@ public class Movement : MonoBehaviour {
   {
     m_state = States.RACE;
   }
+
+  public float TimeToFinish()
+  {
+    float a = aceleration / 2;
+    float b = velocity;
+    float c = -(finishPoint.position.x - transform.position.x);
+
+    float res1 = (-b + Mathf.Sqrt((b * b)- (4 * a * c))) / (2 * a);
+    float res2 = (-b - Mathf.Sqrt((b * b) - (4 * a * c))) / (2 * a);
+
+    return Mathf.Max(res1,res2);
+  }
+
 }
