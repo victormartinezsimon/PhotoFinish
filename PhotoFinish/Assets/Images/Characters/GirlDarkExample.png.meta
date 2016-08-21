@@ -1,0 +1,278 @@
+fileFormatVersion: 2
+guid: 3d74f2a084168fb44a08d1bf5078cc95
+timeCreated: 1471794321
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: GirlDarkExample_0
+    21300002: GirlDarkExample_1
+    21300004: GirlDarkExample_2
+    21300006: GirlDarkExample_3
+    21300008: GirlDarkExample_4
+    21300010: GirlDarkExample_5
+    21300012: GirlDarkExample_6
+    21300014: GirlDarkExample_7
+    21300016: GirlDarkExample_8
+    21300018: GirlDarkExample_9
+    21300020: GirlDarkExample_10
+    21300022: GirlDarkExample_11
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: GirlDarkExample_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 120
+        width: 35
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17.5, y: 19}
+        - {x: -17.5, y: -19}
+        - {x: 17.5, y: -19}
+        - {x: 17.5, y: 19}
+    - name: GirlDarkExample_1
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 120
+        width: 35
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -13.5, y: 19}
+        - {x: -17.5, y: 17}
+        - {x: -17.5, y: -19}
+        - {x: 16.5, y: -19}
+        - {x: 17.5, y: -17}
+        - {x: 17.5, y: 15}
+        - {x: 14.5, y: 19}
+    - name: GirlDarkExample_2
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 120
+        width: 35
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17.5, y: 19}
+        - {x: -17.5, y: -18}
+        - {x: -12.5, y: -19}
+        - {x: 16.5, y: -19}
+        - {x: 17.5, y: -17}
+        - {x: 17.5, y: 18}
+        - {x: 16.5, y: 19}
+    - name: GirlDarkExample_3
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 80
+        width: 35
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17.5, y: 19}
+        - {x: -17.5, y: -10}
+        - {x: -14.5, y: -19}
+        - {x: 14.5, y: -19}
+        - {x: 17.5, y: -9}
+        - {x: 17.5, y: 19}
+    - name: GirlDarkExample_4
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 80
+        width: 35
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17.5, y: 19}
+        - {x: -17.5, y: -18}
+        - {x: -14.5, y: -19}
+        - {x: 17.5, y: -19}
+        - {x: 17.5, y: 15}
+        - {x: 15.5, y: 19}
+    - name: GirlDarkExample_5
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 80
+        width: 35
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17.5, y: 19}
+        - {x: -17.5, y: -10}
+        - {x: -14.5, y: -19}
+        - {x: 12.5, y: -19}
+        - {x: 17.5, y: -9}
+        - {x: 17.5, y: 19}
+    - name: GirlDarkExample_6
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 40
+        width: 35
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -15.5, y: 19}
+        - {x: -17.5, y: 16}
+        - {x: -17.5, y: -17}
+        - {x: -10.5, y: -19}
+        - {x: 14.5, y: -19}
+        - {x: 17.5, y: -15}
+        - {x: 17.5, y: 19}
+    - name: GirlDarkExample_7
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 40
+        width: 35
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17.5, y: 19}
+        - {x: -17.5, y: -18}
+        - {x: -12.5, y: -19}
+        - {x: 15.5, y: -19}
+        - {x: 17.5, y: -16}
+        - {x: 17.5, y: 19}
+    - name: GirlDarkExample_8
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 40
+        width: 35
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17.5, y: 19}
+        - {x: -17.5, y: -18}
+        - {x: -14.5, y: -19}
+        - {x: 17.5, y: -19}
+        - {x: 17.5, y: 19}
+    - name: GirlDarkExample_9
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 0
+        width: 35
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12.5, y: 19}
+        - {x: -17.5, y: 17}
+        - {x: -17.5, y: -12}
+        - {x: -11.5, y: -19}
+        - {x: 9.5, y: -19}
+        - {x: 17.5, y: -12}
+        - {x: 17.5, y: 16}
+        - {x: 16.5, y: 19}
+    - name: GirlDarkExample_10
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 0
+        width: 35
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17.5, y: 19.5}
+        - {x: -17.5, y: -10.5}
+        - {x: -10.5, y: -19.5}
+        - {x: 9.5, y: -19.5}
+        - {x: 17.5, y: -7.5}
+        - {x: 17.5, y: 15.5}
+        - {x: 14.5, y: 19.5}
+    - name: GirlDarkExample_11
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 0
+        width: 35
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14.5, y: 19}
+        - {x: -17.5, y: 12}
+        - {x: -17.5, y: -12}
+        - {x: -14.5, y: -19}
+        - {x: 10.5, y: -19}
+        - {x: 17.5, y: -13}
+        - {x: 17.5, y: 17}
+        - {x: 16.5, y: 19}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

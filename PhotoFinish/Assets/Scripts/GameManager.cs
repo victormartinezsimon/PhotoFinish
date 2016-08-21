@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour {
   public AudioClip cameraSound;
   public AudioSource audioSource;
 
-  [Header("Camera")]
+  [Header("Camera Photos")]
   public float timeCamera = 0.1f;
   public float timeLapse = 0.005f;
   public float maxValueCamera =  75f;
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour {
     {
       initialPositions[i] = runners[i].transform.position;
     }
-    m_state = States.INITIAL;
+    ChangeState(States.INITIAL);
     ResetWRRecord();
     ShowRecord();
   }
@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour {
     {
       runners[i].SomeOneCrossLine();
     }
-    m_state = States.FINISH_CROSSED;
+    ChangeState(States.FINISH_CROSSED);
     _timeShouldBe = DateTime.Now.Ticks;
   }
 
@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour {
     {
       _timeClick = DateTime.Now.Ticks;
       ShowResults();
-      m_state = States.END_RACE;
+      ChangeState(States.END_RACE);
     }
   }
   #endregion
@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour {
   {
     if(Input.touchCount == 1 || Input.GetMouseButtonDown(0))
     {
-      m_state = States.RUN;
+      ChangeState(States.RUN);
       PlayShotSound();
       RestartGame();
     }
@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour {
       CalculateTimeToFinish();
       ShowResults();
       SomeoneReachEndTrack(false);
-      m_state = States.END_RACE;
+      ChangeState(States.END_RACE);
     }
   }
   
@@ -122,7 +122,7 @@ public class GameManager : MonoBehaviour {
       PlayCameraSound();
       ShowResults();
       SomeoneReachEndTrack(false);
-      m_state = States.END_RACE;
+      ChangeState(States.END_RACE);
     }
   }
 
@@ -130,10 +130,23 @@ public class GameManager : MonoBehaviour {
   {
     if (Input.touchCount == 1 || Input.GetMouseButtonDown(0))
     {
-      m_state = States.INITIAL;
+      ChangeState(States.INITIAL);
       ShowRecord();
       ResetPositions();
     }
+  }
+
+  private void ChangeState(States newState)
+  {
+    switch(newState)
+    {
+      case States.END_RACE: AllToIdle(m_state); break;
+      case States.INITIAL: AllToIdle(m_state); break;
+      case States.RUN: AllToRun(m_state); break;
+    }
+
+    m_state = newState;
+
   }
   #endregion
   #region finish
@@ -213,6 +226,12 @@ public class GameManager : MonoBehaviour {
     }
   }
 
+  public void DeleteWR()
+  {
+    PlayerPrefs.SetFloat(PlayerPrefKey, 10);
+    ShowRecord();
+  }
+
   private void SetTextWR(string txt)
   {
     _wrText.text = "WR: " +txt + " ms";
@@ -257,6 +276,33 @@ public class GameManager : MonoBehaviour {
       _flash.color = c;
       yield return new WaitForSeconds(timeStep);
       timeAcum += timeStep;
+    }
+  }
+  #endregion
+  #region animations
+  private void AllToRun(States oldState)
+  {
+    if(oldState == States.RUN || oldState == States.FINISH_CROSSED)
+    {
+      return;
+    }
+
+    for (int i = 0; i < runners.Length; i++)
+    {
+      runners[i].GetComponent<Animator>().SetTrigger("RUN");
+    }
+  }
+
+  private void AllToIdle(States oldState)
+  {
+    if (oldState == States.INITIAL || oldState == States.END_RACE)
+    {
+      return;
+    }
+
+    for (int i = 0; i < runners.Length; i++)
+    {
+      runners[i].GetComponent<Animator>().SetTrigger("STOP");
     }
   }
   #endregion
