@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour {
   public Movement[] runners;
   private Vector3[] initialPositions;
 
+  public float timeBetweenTouch = 0.5f;
+  private float timeAcum = 0;
+
   private long _timeStart;
   private long _timeClick;
   private long _timeShouldBe;
@@ -48,21 +51,29 @@ public class GameManager : MonoBehaviour {
   }
   void Update()
   {
-    switch (m_state)
+    timeAcum += Time.deltaTime;
+    if ( Input.GetMouseButtonDown(0) && timeAcum >= timeBetweenTouch)
     {
-      case States.INITIAL:
-        ManageInitialState();
-        break;
-      case States.RUN:
-        ManageRun();
-        break;
-      case States.FINISH_CROSSED:
-        ManageFinishCrossed();
-        break;
-      case States.END_RACE:
-        ManageEndRace();
-        break;
+      Debug.Log("click in => " + timeAcum);
+      timeAcum = 0;
+      switch (m_state)
+      {
+        case States.INITIAL:
+          ManageInitialState();
+          break;
+        case States.RUN:
+          ManageRun();
+          break;
+        case States.FINISH_CROSSED:
+          ManageFinishCrossed();
+          break;
+        case States.END_RACE:
+          ManageEndRace();
+          break;
+      }
     }
+
+   
   }
 
   #region callbacks
@@ -93,47 +104,35 @@ public class GameManager : MonoBehaviour {
   #region states
   private void ManageInitialState()
   {
-    if(Input.touchCount == 1 || Input.GetMouseButtonDown(0))
-    {
-      ChangeState(States.RUN);
-      PlayShotSound();
-      RestartGame();
-    }
+    ChangeState(States.RUN);
+    PlayShotSound();
+    RestartGame();
   }
 
   private void ManageRun()
   {
-    if (Input.touchCount == 1 || Input.GetMouseButtonDown(0))
-    {
-      _timeClick = DateTime.Now.Ticks;
-      PlayCameraSound();
-      CalculateTimeToFinish();
-      ShowResults();
-      SomeoneReachEndTrack(false);
-      ChangeState(States.END_RACE);
-    }
+    _timeClick = DateTime.Now.Ticks;
+    PlayCameraSound();
+    CalculateTimeToFinish();
+    ShowResults();
+    SomeoneReachEndTrack(false);
+    ChangeState(States.END_RACE);
   }
   
   private void ManageFinishCrossed()
   {
-    if (Input.touchCount == 1 || Input.GetMouseButtonDown(0))
-    {
-      _timeClick = DateTime.Now.Ticks;
-      PlayCameraSound();
-      ShowResults();
-      SomeoneReachEndTrack(false);
-      ChangeState(States.END_RACE);
-    }
+    _timeClick = DateTime.Now.Ticks;
+    PlayCameraSound();
+    ShowResults();
+    SomeoneReachEndTrack(false);
+    ChangeState(States.END_RACE);
   }
 
   private void ManageEndRace()
   {
-    if (Input.touchCount == 1 || Input.GetMouseButtonDown(0))
-    {
-      ChangeState(States.INITIAL);
-      ShowRecord();
-      ResetPositions();
-    }
+    ChangeState(States.INITIAL);
+    ShowRecord();
+    ResetPositions();
   }
 
   private void ChangeState(States newState)
